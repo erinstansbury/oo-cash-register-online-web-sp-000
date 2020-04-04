@@ -1,4 +1,22 @@
+describe 'CashRegister' do
+  let(:cash_register) { CashRegister.new }
+  let(:cash_register_with_discount) { CashRegister.new(20) }
 
+  describe '::new' do
+    it 'sets an instance variable @total on initialization to zero' do
+      expect(cash_register.instance_variable_get(:@total)).to eq(0)
+    end
+
+    it 'optionally takes an employee discount on initialization' do
+      expect(cash_register_with_discount.discount).to eq(20)
+    end
+  end
+
+  describe '#total' do
+    it 'returns the current total' do
+      cash_register.total = 100
+      expect(cash_register.total).to eq(100)
+    end
   end
 
   describe '#add_item' do
@@ -47,7 +65,7 @@
     end
   end
 
-  def '#items' do
+  describe '#items' do
     it 'returns an array containing all items that have been added' do
       new_register = CashRegister.new
       new_register.add_item("eggs", 1.99)
@@ -56,7 +74,7 @@
     end
   end
 
-  def '#void_last_transaction' do
+  describe '#void_last_transaction' do
     it 'subtracts the last item from the total' do
       cash_register.add_item("apple", 0.99)
       cash_register.add_item("tomato", 1.76)
