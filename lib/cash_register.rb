@@ -33,8 +33,8 @@ end
 
 def void_last_transaction
   @total -= @price
-  if total == 0
-    return total = 0.0
+  if @total == 0
+    return cash_register.total = 0.0
   end
 end
 end
