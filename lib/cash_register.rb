@@ -9,7 +9,7 @@ class CashRegister
   end
 
   def add_item(name, cost, number = 1)
-    last_transaction += (cost*number)
+    last_transaction = (cost*number)
     self.total += last_transaction
     number.times{@items.push(name)}
   end
